@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>kinhmon.hp.io.vn - Tổng hợp dịch vụ công</title>
+  <link rel="canonical" href="https://kinhmon.hp.io.vn/" />
+  <style>
+    :root {
+      --primary: #c91f25;
+      --primary-dark: #a9161b;
+      --blue: #1976b8;
+      --green: #18864a;
+      --orange: #ed7d16;
+      --ink: #20242a;
+      --muted: #69727d;
+      --line: #d9dee6;
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --shadow: 0 10px 24px rgba(24, 36, 52, .1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      min-height: 196px;
+      display: grid;
+      place-items: center;
+      padding: 34px 18px 40px;
+      text-align: center;
+      color: #fff;
+      background:
+        linear-gradient(rgba(139, 13, 18, .82), rgba(184, 22, 27, .88)),
+        radial-gradient(circle at 20% 18%, rgba(255, 255, 255, .18), transparent 28%),
+        linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+
+    .badge {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 10px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(24px, 3.1vw, 36px);
+      line-height: 1.16;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .topbar p {
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, .9);
+      font-size: 15px;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 30px 0 44px;
+    }
+
+    .controls {
+      display: grid;
+      justify-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .filter {
+      min-height: 38px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 999px;
+      background: #e4e7eb;
+      color: #27313b;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(201, 31, 37, .18);
+    }
+
+    .searchbox {
+      width: min(470px, 100%);
+      position: relative;
+    }
+
+    .searchbox svg {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #66717f;
+    }
+
+    .searchbox input {
+      width: 100%;
+      height: 46px;
+      padding: 0 15px 0 46px;
+      border: 1px solid #ccd3dc;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .searchbox input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(25, 118, 184, .14);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 158px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 18px 14px;
+      border: 1px solid #ecf0f4;
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--accent);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(24, 36, 52, .16);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+    }
+
+    .icon svg {
+      width: 58px;
+      height: 58px;
+    }
+
+    .card strong {
+      min-height: 40px;
+      display: grid;
+      align-items: center;
+      font-size: 15px;
+      line-height: 1.16;
+    }
+
+    .card small {
+      margin-top: -8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .empty {
+      display: none;
+      padding: 34px 16px;
+      border: 1px dashed #c7ced8;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer {
+      padding: 18px 16px 26px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1060px) {
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 24px, 560px);
+        padding-top: 22px;
+      }
+
+      .topbar {
+        min-height: 176px;
+        padding: 28px 16px 34px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .card {
+        min-height: 146px;
+        padding: 16px 10px;
+      }
+
+      .card strong {
+        font-size: 14px;
+      }
+
+      .meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="40" height="40" fill="none">
+          <circle cx="32" cy="32" r="29" fill="#ffce3a" />
+          <path d="M32 10l7.1 14.2 15.7 2.3-11.3 11 2.7 15.6L32 45.7 17.8 53.1l2.7-15.6-11.3-11 15.7-2.3L32 10z" fill="#d71920" />
+        </svg>
+      </div>
+      <h1>Trung tâm phục vụ<br>hành chính công Kinh Môn</h1>
+      <p>https://kinhmon.hp.io.vn/ - Tổng hợp liên kết, tiện ích và hệ thống xử lý thủ tục hành chính</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Tìm kiếm và lọc dịch vụ">
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all" type="button">Tất cả</button>
+        <button class="filter" data-filter="nop-ho-so" type="button">Nộp hồ sơ DVC</button>
+        <button class="filter" data-filter="mot-cua" type="button">Một cửa điện tử cấp Bộ</button>
+        <button class="filter" data-filter="bao-cao" type="button">Thống kê - Báo cáo</button>
+        <button class="filter" data-filter="noi-bo" type="button">Nội bộ - Tiện ích hỗ trợ</button>
+      </div>
+
+      <label class="searchbox">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m21 21-4.35-4.35m1.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <input id="search" type="search" placeholder="Tìm theo tên Bộ / hệ thống / báo cáo..." autocomplete="off" />
+      </label>
+    </section>
+
+    <div class="meta">
+      <span id="count">Đang hiển thị 0 dịch vụ</span>
+      <span>Nhấn vào thẻ để mở liên kết trong tab mới.</span>
+    </div>
+
+    <section class="grid" id="grid" aria-label="Danh sách dịch vụ"></section>
+    <p class="empty" id="empty">Không tìm thấy dịch vụ phù hợp.</p>
+  </main>
+
+  <footer>© 2026 - kinhmon.hp.io.vn</footer>
+
+  <script>
+    const services = [
+      { title: "Cổng DVC Quốc gia", subtitle: "Nộp hồ sơ", category: "nop-ho-so", accent: "#1976b8", icon: "emblem", url: "https://dichvucong.gov.vn/" },
+      { title: "Danh sách Dịch vụ công", subtitle: "Tra cứu thủ tục", category: "nop-ho-so", accent: "#1976b8", icon: "star", url: "https://dichvucong.gov.vn/p/home/dvc-danh-sach-dich-vu-cong.html" },
+      { title: "Thị thực điện tử Việt Nam", subtitle: "Bộ Công an", category: "nop-ho-so", accent: "#1976b8", icon: "passport", url: "https://thithucdientu.gov.vn/" },
+      { title: "Một cửa Bộ Nội vụ", category: "mot-cua", accent: "#18864a", icon: "office", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Tư pháp", category: "mot-cua", accent: "#18864a", icon: "office", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Y tế", category: "mot-cua", accent: "#18864a", icon: "health", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Giáo dục và Đào tạo", category: "mot-cua", accent: "#18864a", icon: "book", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Công thương", category: "mot-cua", accent: "#18864a", icon: "office", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Xây dựng", category: "mot-cua", accent: "#18864a", icon: "building", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Tài chính", category: "mot-cua", accent: "#18864a", icon: "finance", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Ngoại giao", category: "mot-cua", accent: "#18864a", icon: "globe", url: "https://dichvucong.gov.vn/" },
+      { title: "Một cửa Bộ Khoa học và Công nghệ", category: "mot-cua", accent: "#18864a", icon: "atom", url: "https://dichvucong.gov.vn/" },
+      { title: "Báo cáo Kinh Môn", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Thống kê hồ sơ TTHC", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Thống kê hồ sơ Công thương", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Thống kê hồ sơ Kinh doanh", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Thống kê hồ sơ Nội vụ", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Thống kê hồ sơ Xây dựng", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Thống kê hồ sơ Giáo dục", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Báo cáo Kiểm soát TTHC", category: "bao-cao", accent: "#ed7d16", icon: "chart", url: "#" },
+      { title: "Quản lý văn bản", category: "noi-bo", accent: "#c91f25", icon: "network", url: "#" },
+      { title: "Egov DSS Kinh Môn", category: "noi-bo", accent: "#c91f25", icon: "dashboard", url: "#" },
+      { title: "Xử lý PAKN", category: "noi-bo", accent: "#c91f25", icon: "emblem", url: "https://dichvucong.gov.vn/" },
+      { title: "CSDL TTHC", category: "noi-bo", accent: "#c91f25", icon: "database", url: "#" },
+      { title: "Mail GOV", category: "noi-bo", accent: "#c91f25", icon: "mail", url: "#" },
+      { title: "Tạo mã QR", category: "noi-bo", accent: "#c91f25", icon: "qr", url: "#" },
+      { title: "Hệ thống Văn bản Chính phủ", category: "noi-bo", accent: "#c91f25", icon: "book", url: "https://vanban.chinhphu.vn/" },
+      { title: "Văn bản Pháp luật", category: "noi-bo", accent: "#c91f25", icon: "book", url: "https://vbpl.vn/" },
+      { title: "Bộ Pháp điển", category: "noi-bo", accent: "#c91f25", icon: "book", url: "https://phapdien.moj.gov.vn/" },
+      { title: "Công cụ nén PDF", category: "noi-bo", accent: "#c91f25", icon: "pdf", url: "#" },
+      { title: "Địa chỉ cần biết", category: "noi-bo", accent: "#c91f25", icon: "map", url: "#" }
+    ];
+
+    const icons = {
+      emblem: '<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="26" fill="#e32227"/><path d="M32 13l6.4 13 14.3 2.1-10.4 10.1 2.5 14.2L32 45.7 19.2 52.4l2.5-14.2-10.4-10.1 14.3-2.1L32 13z" fill="#ffd84d"/></svg>',
+      star: '<svg viewBox="0 0 64 64" fill="none"><path d="M32 8l8.5 17.2L59 28l-13.4 13 3.2 18.4L32 50.7 15.2 59.4 18.4 41 5 28l18.5-2.8L32 8z" fill="currentColor"/><circle cx="32" cy="32" r="8" fill="#fff"/></svg>',
+      office: '<svg viewBox="0 0 64 64" fill="none"><rect x="14" y="14" width="34" height="42" rx="4" stroke="currentColor" stroke-width="4"/><path d="M24 24h6M38 24h4M24 34h6M38 34h4M24 44h6M38 44h4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M29 56V46h10v10" stroke="currentColor" stroke-width="4"/></svg>',
+      passport: '<svg viewBox="0 0 64 64" fill="none"><rect x="16" y="8" width="32" height="48" rx="5" fill="currentColor"/><circle cx="32" cy="30" r="10" fill="#fff"/><path d="M22 44h20" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>',
+      health: '<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="4"/><path d="M32 18v28M18 32h28" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>',
+      book: '<svg viewBox="0 0 64 64" fill="none"><path d="M10 14h18c5 0 8 3 8 8v36c0-5-4-8-9-8H10V14Zm54 0H46c-5 0-8 3-8 8v36c0-5 4-8 9-8h17V14Z" transform="translate(-5 0)" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M18 25h14M18 34h14M46 25h14M46 34h14" transform="translate(-5 0)" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+      building: '<svg viewBox="0 0 64 64" fill="none"><path d="M10 54h44M18 54V18l14-8 14 8v36" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 24h4M38 24h4M26 34h4M38 34h4M26 44h4M38 44h4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>',
+      finance: '<svg viewBox="0 0 64 64" fill="none"><path d="M12 24h40L32 12 12 24Zm4 8h32M20 32v18M32 32v18M44 32v18M14 54h38" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      globe: '<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="4"/><path d="M8 32h48M32 7c8 8 12 16 12 25S40 49 32 57C24 49 20 41 20 32S24 15 32 7Z" stroke="currentColor" stroke-width="4"/></svg>',
+      atom: '<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="4" fill="currentColor"/><ellipse cx="32" cy="32" rx="24" ry="9" stroke="currentColor" stroke-width="3"/><ellipse cx="32" cy="32" rx="24" ry="9" transform="rotate(60 32 32)" stroke="currentColor" stroke-width="3"/><ellipse cx="32" cy="32" rx="24" ry="9" transform="rotate(120 32 32)" stroke="currentColor" stroke-width="3"/></svg>',
+      chart: '<svg viewBox="0 0 64 64" fill="none"><path d="M10 52h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="15" y="34" width="8" height="16" fill="currentColor"/><rect x="29" y="25" width="8" height="25" fill="currentColor"/><rect x="43" y="16" width="8" height="34" fill="currentColor"/><path d="M14 27l14-9 11 6 13-13" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      network: '<svg viewBox="0 0 64 64" fill="none"><circle cx="18" cy="20" r="7" stroke="currentColor" stroke-width="4"/><circle cx="46" cy="20" r="7" stroke="currentColor" stroke-width="4"/><circle cx="32" cy="46" r="7" stroke="currentColor" stroke-width="4"/><path d="M24 24l8 15 8-15M25 20h15" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>',
+      dashboard: '<svg viewBox="0 0 64 64" fill="none"><rect x="10" y="12" width="44" height="42" rx="6" stroke="currentColor" stroke-width="4"/><path d="M19 43l9-9 7 6 11-16M18 23h9" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      database: '<svg viewBox="0 0 64 64" fill="none"><ellipse cx="32" cy="15" rx="20" ry="8" stroke="currentColor" stroke-width="4"/><path d="M12 15v34c0 4 9 8 20 8s20-4 20-8V15M12 32c0 4 9 8 20 8s20-4 20-8" stroke="currentColor" stroke-width="4"/></svg>',
+      mail: '<svg viewBox="0 0 64 64" fill="none"><rect x="8" y="16" width="48" height="36" rx="5" fill="currentColor"/><path d="M12 20l20 17 20-17" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      qr: '<svg viewBox="0 0 64 64" fill="none"><path d="M10 10h18v18H10V10Zm26 0h18v18H36V10ZM10 36h18v18H10V36Z" stroke="currentColor" stroke-width="4"/><path d="M38 38h6v6h-6v-6Zm10 0h6v16h-6V38Zm-12 12h8v4h-8v-4Z" fill="currentColor"/></svg>',
+      pdf: '<svg viewBox="0 0 64 64" fill="none"><path d="M18 6h22l10 10v42H18V6Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M40 6v16h12M20 43c8 0 13-13 13-23 1 12 6 23 13 23-8 0-19 4-26 9" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      map: '<svg viewBox="0 0 64 64" fill="none"><path d="M32 57s19-17 19-34a19 19 0 0 0-38 0c0 17 19 34 19 34Z" fill="currentColor"/><circle cx="32" cy="24" r="8" fill="#fff"/></svg>'
+    };
+
+    const grid = document.getElementById("grid");
+    const count = document.getElementById("count");
+    const empty = document.getElementById("empty");
+    const search = document.getElementById("search");
+    const filters = document.getElementById("filters");
+    let activeFilter = "all";
+
+    function normalize(value) {
+      return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function render() {
+      const keyword = normalize(search.value.trim());
+      const visible = services.filter((service) => {
+        const matchFilter = activeFilter === "all" || service.category === activeFilter;
+        const matchKeyword = !keyword || normalize(`${service.title} ${service.subtitle || ""}`).includes(keyword);
+        return matchFilter && matchKeyword;
+      });
+
+      grid.innerHTML = visible.map((service) => `
+        <a class="card" href="${service.url}" target="_blank" rel="noopener" style="--accent:${service.accent}" aria-label="Mở ${service.title}">
+          <span class="icon" aria-hidden="true">${icons[service.icon]}</span>
+          <strong>${service.title}</strong>
+          ${service.subtitle ? `<small>${service.subtitle}</small>` : ""}
+        </a>
+      `).join("");
+
+      count.textContent = `Đang hiển thị ${visible.length} / ${services.length} dịch vụ`;
+      empty.style.display = visible.length ? "none" : "block";
+    }
+
+    filters.addEventListener("click", (event) => {
+      const button = event.target.closest(".filter");
+      if (!button) return;
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll(".filter").forEach((item) => item.classList.toggle("active", item === button));
+      render();
+    });
+
+    search.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
